@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Nhà đất Vũng Tàu</title>
+
+    <style>
+
+        body { font-family: Arial; margin: 20px; }
+
+        .box { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+
+        .price { color: red; }
+
+    </style>
+
+</head>
+
+<body>
+
+<h1>🏠 Nhà đất Vũng Tàu</h1>
+
+<!-- Bộ lọc -->
+
+<label>Giá từ:</label>
+
+<input type="number" id="minPrice" placeholder="Tỷ">
+
+<label>đến</label>
+
+<input type="number" id="maxPrice" placeholder="Tỷ">
+
+<label>Khu vực:</label>
+
+<select id="area">
+
+    <option value="">Tất cả</option>
+
+    <option value="vungtau">Vũng Tàu</option>
+
+    <option value="baria">Bà Rịa</option>
+
+</select>
+
+<button onclick="filterData()">Lọc</button>
+
+<h2>🔥 Nhà mới đăng</h2>
+
+<div id="list">
+
+<div class="box" data-price="3" data-area="vungtau">
+
+    <b>Bán nhà mặt tiền</b><br>
+
+    <span class="price">3 tỷ</span><br>
+
+    📍 Vũng Tàu - 📐 80m2
+
+</div>
+
+<div class="box" data-price="1.2" data-area="baria">
+
+    <b>Đất nền giá rẻ</b><br>
+
+    <span class="price">1.2 tỷ</span><br>
+
+    📍 Bà Rịa - 📐 100m2
+
+</div>
+
+<div class="box" data-price="5" data-area="vungtau">
+
+    <b>Biệt thự cao cấp</b><br>
+
+    <span class="price">5 tỷ</span><br>
+
+    📍 Vũng Tàu - 📐 150m2
+
+</div>
+
+</div>
+
+<script>
+
+function filterData() {
+
+    let min = document.getElementById("minPrice").value;
+
+    let max = document.getElementById("maxPrice").value;
+
+    let area = document.getElementById("area").value;
+
+    let items = document.querySelectorAll(".box");
+
+    items.forEach(item => {
+
+        let price = parseFloat(item.getAttribute("data-price"));
+
+        let itemArea = item.getAttribute("data-area");
+
+        let matchPrice = (min === "" || price >= min) && (max === "" || price <= max);
+
+        let matchArea = (area === "" || itemArea === area);
+
+        if (matchPrice && matchArea) {
+
+            item.style.display = "block";
+
+        } else {
+
+            item.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+
+</html>
