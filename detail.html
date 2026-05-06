@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chi tiết</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="detail"></div>
+
+<script>
+const item = JSON.parse(localStorage.getItem("detail"));
+
+document.getElementById("detail").innerHTML = `
+    <div style="padding:20px">
+        <h1>${item.title}</h1>
+        <img src="${item.img}" style="width:400px">
+        <p><b>Giá:</b> ${item.price} tỷ</p>
+        <p><b>Khu vực:</b> ${item.city} - ${item.ward}</p>
+        <p>${item.desc}</p>
+        <a href="index.html">⬅ Quay lại</a>
+    </div>
+`;
+</script>
+
+</body>
+</html>

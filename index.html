@@ -1,125 +1,57 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="vi">
 <head>
-
-    <title>Nhà đất Vũng Tàu</title>
-
-    <style>
-
-        body { font-family: Arial; margin: 20px; }
-
-        .box { border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
-
-        .price { color: red; }
-
-    </style>
-
+<meta charset="UTF-8">
+<title>BĐS Vũng Tàu</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1>🏠 Nhà đất Vũng Tàu</h1>
+<header>
+    <h1>🏠 Bất Động Sản</h1>
+    <nav>
+        <a href="#">Trang chủ</a>
+        <a href="#about">Giới thiệu</a>
+        <a href="#contact">Liên hệ</a>
+    </nav>
+</header>
 
-<!-- Bộ lọc -->
+<section class="filter">
 
-<label>Giá từ:</label>
+    <input type="text" id="keyword" placeholder="Tìm theo từ khóa...">
 
-<input type="number" id="minPrice" placeholder="Tỷ">
+    <select id="city">
+        <option value="">Thành phố</option>
+        <option value="Vũng Tàu">Vũng Tàu</option>
+        <option value="Bà Rịa">Bà Rịa</option>
+    </select>
 
-<label>đến</label>
+    <select id="ward">
+        <option value="">Phường</option>
+        <option value="Phường 7">Phường 7</option>
+        <option value="Phường 8">Phường 8</option>
+    </select>
 
-<input type="number" id="maxPrice" placeholder="Tỷ">
+    <input type="number" id="priceMin" placeholder="Giá từ (tỷ)">
+    <input type="number" id="priceMax" placeholder="Đến (tỷ)">
 
-<label>Khu vực:</label>
+    <button onclick="filterData()">Tìm kiếm</button>
+</section>
 
-<select id="area">
+<section id="list" class="list"></section>
 
-    <option value="">Tất cả</option>
+<section id="about">
+    <h2>Giới thiệu</h2>
+    <p>Chuyên mua bán nhà đất tại Vũng Tàu - Bà Rịa, uy tín, giá tốt.</p>
+</section>
 
-    <option value="vungtau">Vũng Tàu</option>
+<section id="contact">
+    <h2>Liên hệ</h2>
+    <p>📞 0900 000 000</p>
+    <p>📧 contact@batdongsan.vn</p>
+</section>
 
-    <option value="baria">Bà Rịa</option>
-
-</select>
-
-<button onclick="filterData()">Lọc</button>
-
-<h2>🔥 Nhà mới đăng</h2>
-
-<div id="list">
-
-<div class="box" data-price="3" data-area="vungtau">
-
-    <b>Bán nhà mặt tiền</b><br>
-
-    <span class="price">3 tỷ</span><br>
-
-    📍 Vũng Tàu - 📐 80m2
-
-</div>
-
-<div class="box" data-price="1.2" data-area="baria">
-
-    <b>Đất nền giá rẻ</b><br>
-
-    <span class="price">1.2 tỷ</span><br>
-
-    📍 Bà Rịa - 📐 100m2
-
-</div>
-
-<div class="box" data-price="5" data-area="vungtau">
-
-    <b>Biệt thự cao cấp</b><br>
-
-    <span class="price">5 tỷ</span><br>
-
-    📍 Vũng Tàu - 📐 150m2
-
-</div>
-
-</div>
-
-<script>
-
-function filterData() {
-
-    let min = document.getElementById("minPrice").value;
-
-    let max = document.getElementById("maxPrice").value;
-
-    let area = document.getElementById("area").value;
-
-    let items = document.querySelectorAll(".box");
-
-    items.forEach(item => {
-
-        let price = parseFloat(item.getAttribute("data-price"));
-
-        let itemArea = item.getAttribute("data-area");
-
-        let matchPrice = (min === "" || price >= min) && (max === "" || price <= max);
-
-        let matchArea = (area === "" || itemArea === area);
-
-        if (matchPrice && matchArea) {
-
-            item.style.display = "block";
-
-        } else {
-
-            item.style.display = "none";
-
-        }
-
-    });
-
-}
-
-</script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
